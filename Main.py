@@ -33,7 +33,7 @@ def is_shorten_link(token, link):
     return mistake.get('error')
 
 
-def link_parser():
+def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("link", type=str)
     return parser
@@ -42,7 +42,7 @@ def link_parser():
 def main():
     load_dotenv()
     token = os.environ["VK_API_TOKEN"]
-    parser = link_parser()
+    parser = create_parser()
     args = parser.parse_args(sys.argv[1:])
     if is_shorten_link(token, args.link):
         try:
